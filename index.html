@@ -441,7 +441,7 @@ async function sendToGoogleSheet(data, ikm, kategori){
 
     try{
 
-       const response = await fetch(scriptURL,{
+      const response = await fetch(scriptURL,{
     method:"POST",
     headers:{
         "Content-Type":"text/plain;charset=utf-8"
@@ -449,11 +449,11 @@ async function sendToGoogleSheet(data, ikm, kategori){
     body:JSON.stringify(data)
 });
 
-if(!response.ok){
-    throw new Error("Server Error");
-}
+const text = await response.text();
 
-const result = await response.json();
+console.log(text);
+
+const result = JSON.parse(text);
 
 if(result.status!="success"){
     throw new Error(result.message);
