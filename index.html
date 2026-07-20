@@ -434,12 +434,13 @@ async function sendToGoogleSheet(data, ikm, kategori){
 
     try{
 
-        const response = await fetch(scriptURL,{
-    method:"POST",
-    headers:{
-        "Content-Type":"application/json"
+       const response = await fetch(scriptURL, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+        "Content-Type": "text/plain;charset=utf-8"
     },
-    body:JSON.stringify(data)
+    body: JSON.stringify(data)
 });
 
 if(!response.ok){
@@ -464,7 +465,19 @@ if (sound) {
             spread:120,
             origin:{y:0.6}
         });
+         let stars="";
 
+if(ikm>=81.26)
+stars="⭐⭐⭐⭐⭐";
+
+else if(ikm>=62.51)
+stars="⭐⭐⭐⭐";
+
+else if(ikm>=43.76)
+stars="⭐⭐⭐";
+
+else
+stars="⭐⭐";
         await Swal.fire({
 
             width:700,
@@ -537,22 +550,7 @@ if (sound) {
                     font-size:28px;
                     color:#28a745;
                     font-weight:bold">
-
-                    let stars="";
-
-if(ikm>=81.26)
-stars="⭐⭐⭐⭐⭐";
-
-else if(ikm>=62.51)
-stars="⭐⭐⭐⭐";
-
-else if(ikm>=43.76)
-stars="⭐⭐⭐";
-
-else
-stars="⭐⭐";
-${stars}
-
+		    ${stars}
                 </div>
 
                 <div style="
