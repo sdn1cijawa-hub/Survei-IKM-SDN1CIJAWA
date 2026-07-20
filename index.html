@@ -433,24 +433,23 @@ async function sendToGoogleSheet(data, ikm, kategori){
 
     try{
 
-       const formData = new FormData();
-
-for (const key in data) {
-    formData.append(key, data[key]);
-}
-
-const response = await fetch(scriptURL, {
-    method: "POST",
-    body: formData
+       const response = await fetch(scriptURL,{
+    method:"POST",
+    headers:{
+        "Content-Type":"text/plain;charset=utf-8"
+    },
+    body:JSON.stringify(data)
 });
 
-const result = await response.json();
-
 if(!response.ok){
-   throw new Error("Server Error");
+    throw new Error("Server Error");
 }
 
 const result = await response.json();
+
+if(result.status!="success"){
+    throw new Error(result.message);
+}
 
 if(result.status!="success"){
     throw new Error(result.message);
@@ -621,14 +620,14 @@ async function loginAdmin(){
 
         const response = await fetch(scriptURL,{
             method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                action:"login",
-                username:user,
-                password:pass
-            })
+           headers:{
+    "Content-Type":"text/plain;charset=utf-8"
+},
+body:JSON.stringify({
+    action:"login",
+    username:user,
+    password:pass
+})
         });
 
         if(!response.ok){
