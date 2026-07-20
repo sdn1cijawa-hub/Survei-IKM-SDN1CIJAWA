@@ -362,7 +362,15 @@ async function calculateIKM(){
   if(!status||!gender||!pendidikan){alert('Lengkapi data responden.');return;}
   const values=[];
   for(let i=1;i<=9;i++){
-    const val=form['q'+i].value;
+    const checked =
+document.querySelector('input[name="q'+i+'"]:checked');
+
+if(!checked){
+   alert("Mohon isi semua pertanyaan");
+   return;
+}
+
+values.push(Number(checked.value));
     if(!val){alert('Mohon isi semua pertanyaan.');return;}
     values.push(parseInt(val));
   }
@@ -451,9 +459,6 @@ if(result.status!="success"){
     throw new Error(result.message);
 }
 
-if(result.status!="success"){
-    throw new Error(result.message);
-}
 
         // suara
         const sound = document.getElementById("successSound");
