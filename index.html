@@ -14,77 +14,274 @@
   --hijau: #90EE90;
   --bayangan: rgba(0,0,0,0.1);
 }
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--abu);
-  color: #333;
+body{
+    margin:0;
+    padding-top:110px;
+    font-family:'Segoe UI',sans-serif;
+    color:#333;
+    position:relative;
+    min-height:100vh;
 }
-header {
-  background-color: var(--biru);
-  color: var(--putih);
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 6px var(--bayangan);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+
+/* Background */
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:url("background.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+    filter:brightness(70%);
+
+    z-index:-2;
+
 }
-header img {
-  height: 60px;
-  margin-right: 15px;
+
+/* Lapisan transparan */
+body::after{
+    content:"";
+    position:fixed;
+    top:0;
+    inset:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,40,90,0.25);
+
+    z-index:-1;
 }
-header h1 {
-  flex: 1;
-  text-align: center;
-  font-size: 1.2rem;
-  margin: 0;
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:95px;
+
+    background:#004aad;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 30px;
+
+    box-sizing:border-box;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.35);
+
+    z-index:9999;
 }
-header a {
-  background-color: var(--oranye);
-  color: var(--putih);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
+
+.header-left{
+    width:110px;
+    display:flex;
+    align-items:center;
+}
+
+.header-left img{
+    width:95px;
+    height:95px;
+    object-fit:contain;
+}
+
+.header-center{
+
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+
+}
+
+.header-title{
+
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.header-school{
+
+      color:#fff;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.header-divider{
+
+     width:2px;
+    height:45px;
+    background:#fff;
+}
+
+.header-right{
+
+      width:170px;
+    display:flex;
+    justify-content:flex-end;
+
+}
+
+.header-right button{
+
+    background:#f7931e;
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.header-right button:hover{
+
+   background:#d67d0d;
+}
+
+#logoutBtn{
+
+    background:#dc3545;
+
 }
 header a:hover {
   background-color: var(--emas);
 }
-.container {
-  max-width: 900px;
-  margin: 2rem auto;
-  background: var(--putih);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px var(--bayangan);
-  padding: 2rem;
-  animation: fadeIn 0.5s ease;
+.container{
+    width:90%;
+
+    max-width:1100px;
+
+    margin:45px auto;
+
+    background:rgba(255,255,255,.94);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:25px;
+
+    padding:45px 55px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.30);
+
+    animation:fadeIn .5s ease;
+}
+#homePage h2{
+    font-size:52px;
+    color:#004aad;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+#homePage p{
+    font-size:24px;
+    line-height:1.8;
+    text-align:center;
+}
+
+button{
+    background:#f7931e;
+    ...
+}
+#homePage button{
+
+    margin-top:25px;
+
+    font-size:24px;
+
+    padding:18px 50px;
+
+    border-radius:50px;
+}
+#dashboardPage{
+
+    width:92%;
+
+    max-width:1250px;
+
+    padding:45px 55px;
+}
+#dashboardPage h2{
+
+    font-size:44px;
+
+    margin-bottom:35px;
+}
+table{
+
+    width:100%;
+
+    font-size:18px;
+}
+
+th{
+
+    padding:16px;
+}
+
+td{
+
+    padding:14px;
 }
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(10px);}
   to {opacity: 1; transform: translateY(0);}
 }
-button {
-  background-color: var(--oranye);
-  color: var(--putih);
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s;
+button{
+
+    background:#f7931e;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 28px;
+
+    border-radius:50px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-weight:bold;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+
 }
-button:hover {
-  background-color: var(--emas);
+button:hover{
+
+    transform:translateY(-3px);
+
+    background:#d4af37;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.25);
+
 }
-.card {
-  background: var(--putih);
-  border-radius: 10px;
-  box-shadow: 0 2px 6px var(--bayangan);
-  padding: 1rem;
-  margin-bottom: 1rem;
+.card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
 }
 input[type="text"], input[type="password"], select {
   width: 100%;
@@ -194,10 +391,38 @@ th {
 </head>
 <body>
 <header>
-  <img src="logo-sd.png" alt="Logo SD Negeri 1 Cijawa">
-  <h1>SURVEI INDEKS KEPUASAN MASYARAKAT (IKM)</h1>
-  <h1>SD NEGERI 1 CIJAWA</h1>
-  <a href="#" onclick="goTo('loginPage')">Login Admin</a>
+
+    <div class="header-left">
+        <img src="logo-sd.png" alt="Logo">
+    </div>
+
+    <div class="header-center">
+        <div class="header-title">
+            SURVEI INDEKS KEPUASAN MASYARAKAT (IKM)
+        </div>
+
+        <div class="header-divider"></div>
+
+        <div class="header-school">
+            SD NEGERI 1 CIJAWA
+        </div>
+    </div>
+
+    <div class="header-right">
+
+        <button id="loginBtn"
+                onclick="goTo('loginPage')">
+            Login Admin
+        </button>
+
+        <button id="logoutBtn"
+                onclick="logoutAdmin()"
+                style="display:none;background:#dc3545;">
+            Logout
+        </button>
+
+    </div>
+
 </header>
 
 <div class="container" id="homePage">
@@ -262,16 +487,34 @@ th {
     </div>
   </div>
   <div style="text-align:center;">
-    <button onclick="goTo('surveyPage')">Lanjutkan</button>
-  </div>
+    <button style="background-color:#6c757d;margin-right:10px;"
+            onclick="goTo('homePage')">
+        Kembali
+    </button>
+
+    <button onclick="goTo('surveyPage')">
+        Lanjutkan
+    </button>
+</div>
 </div>
 
 <div class="container hidden" id="surveyPage">
   <h2 style="color:var(--biru);text-align:center;">Kuesioner Survei</h2>
   <form id="surveyForm"></form>
   <div style="text-align:center;">
-    <button type="button" onclick="calculateIKM()">Kirim</button>
-  </div>
+
+    <button type="button"
+            style="background-color:#6c757d;margin-right:10px;"
+            onclick="goTo('respondentPage')">
+        Kembali
+    </button>
+
+    <button type="button"
+            onclick="calculateIKM()">
+        Kirim
+    </button>
+
+</div>
 </div>
 
 <div class="container hidden" id="resultPage">
@@ -292,9 +535,6 @@ th {
 
 <div class="container hidden" id="dashboardPage">
   <h2 style="color:var(--biru);text-align:center;">Dashboard Admin</h2>
-  <div style="text-align:right;margin-bottom:1rem;">
-    <button onclick="logoutAdmin()">Logout</button>
-  </div>
   <div id="loading">Memuat data dari Google Sheets...</div>
   <div class="filter">
     <label>Filter Status: </label>
@@ -350,6 +590,27 @@ questions.forEach((q,i)=>{
   <div class="scale-info">Nilai 1: Tidak Baik | Nilai 2: Kurang Baik | Nilai 3: Baik | Nilai 4: Sangat Baik</div>`;
   form.appendChild(div);
 });
+function updateHeaderButton() {
+
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (!loginBtn || !logoutBtn) return;
+
+    if (sessionStorage.getItem("isAdmin") === "true") {
+
+        loginBtn.style.display = "none";
+        logoutBtn.style.display = "inline-block";
+
+    } else {
+
+        loginBtn.style.display = "inline-block";
+        logoutBtn.style.display = "none";
+
+    }
+
+}
+
 function goTo(pageId){
   document.querySelectorAll('.container').forEach(c=>c.classList.add('hidden'));
   document.getElementById(pageId).classList.remove('hidden');
@@ -660,7 +921,7 @@ const result = JSON.parse(text);
         if(result.status==="success"){
 
             sessionStorage.setItem("isAdmin","true");
-
+	    updateHeaderButton();
             Swal.fire({
                 icon:"success",
                 title:"Login Berhasil",
@@ -695,6 +956,7 @@ const result = JSON.parse(text);
 }
 function logoutAdmin(){
   sessionStorage.removeItem('isAdmin');
+  updateHeaderButton();
   goTo('homePage');
 }
 function validateAdminSession(){
@@ -943,6 +1205,11 @@ function exportCSV(){
   a.download='data_ikm.csv';
   a.click();
   URL.revokeObjectURL(url);
+}
+window.onload=function(){
+
+    updateHeaderButton();
+
 }
 </script>
 
