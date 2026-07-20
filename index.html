@@ -362,18 +362,20 @@ async function calculateIKM(){
   if(!status||!gender||!pendidikan){alert('Lengkapi data responden.');return;}
   const values=[];
   for(let i=1;i<=9;i++){
-    const checked =
-document.querySelector('input[name="q'+i+'"]:checked');
+    for(let i=1;i<=9;i++){
 
-if(!checked){
-   alert("Mohon isi semua pertanyaan");
-   return;
+    const checked = document.querySelector(
+        'input[name="q'+i+'"]:checked'
+    );
+
+    if(!checked){
+        alert("Mohon isi semua pertanyaan.");
+        return;
+    }
+
+    values.push(Number(checked.value));
+
 }
-
-values.push(Number(checked.value));
-    if(!val){alert('Mohon isi semua pertanyaan.');return;}
-    values.push(parseInt(val));
-  }
   const avg=values.reduce((a,b)=>a+b,0)/values.length;
   const ikm=avg*25;
   let kategori='';
@@ -451,7 +453,7 @@ async function sendToGoogleSheet(data, ikm, kategori){
 
 const text = await response.text();
 
-console.log(text);
+alert(text);
 
 const result = JSON.parse(text);
 
@@ -639,7 +641,10 @@ body:JSON.stringify({
             throw new Error("Server Error");
         }
 
-        const result = await response.json();
+        const text = await response.text();
+alert(text);
+
+const result = JSON.parse(text);
 
         if(result.status==="success"){
 
